@@ -10,6 +10,8 @@ import { TRACKING_ID } from "@/lib/schemas";
 import { fmtNumber, fmtTime } from "@/lib/i18n";
 import { TempChart } from "@/components/charts/TempChart";
 import { Badge } from "@/components/ui/Section";
+import { Icon } from "@/components/Icon";
+import { PREMIUM } from "@/content/premium";
 
 const SAMPLES = ["DEMO-RX-1042", "DEMO-RX-1057", "DEMO-FD-2210", "DEMO-EC-4410"];
 
@@ -74,10 +76,22 @@ export function TrackingDemo({ t, locale, initialId }: { t: Dict; locale: Locale
         <div className="mt-4 flex flex-wrap items-center gap-2 text-sm">
           <span className="text-steel-600">{t.tracking.tryThese}</span>
           {SAMPLES.map((x) => (
-            <button key={x} type="button" onClick={() => void track(x)} className="rounded-full border border-steel-300 px-3 py-1 font-mono text-xs hover:bg-ice-50" dir="ltr">{x}</button>
+            <button key={x} type="button" onClick={() => void track(x)} className="rounded-full border border-steel-300 bg-white/70 px-3 py-1 font-mono text-xs transition hover:border-frost-500 hover:bg-frost-100" dir="ltr">{x}</button>
           ))}
         </div>
       </form>
+
+      {state !== "ok" && (
+        <ul className="mt-8 grid gap-5 sm:grid-cols-3">
+          {PREMIUM[locale].trackingHints.map((h) => (
+            <li key={h.title} className="lift glass-card rounded-[var(--radius-card)] p-6">
+              <span className="icon-tile flex h-11 w-11 items-center justify-center rounded-xl"><Icon name={h.icon} className="h-5 w-5" /></span>
+              <h2 className="mt-4 font-semibold">{h.title}</h2>
+              <p className="mt-1.5 text-sm text-steel-700">{h.body}</p>
+            </li>
+          ))}
+        </ul>
+      )}
 
       <div aria-live="polite">
         {state === "ok" && s && (

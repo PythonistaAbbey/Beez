@@ -46,7 +46,7 @@ export function SiteHeader({ t, locale }: { t: Dict; locale: Locale }) {
 
   const isActive = (p: string) => pathname === href(p) || (p !== "" && pathname.startsWith(href(p)));
   const linkCls = (p: string) =>
-    `rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-steel-100 ${isActive(p) ? "text-navy-900" : "text-steel-700"}`;
+    `relative rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-steel-100/70 hover:text-navy-900 after:absolute after:inset-x-3 after:-bottom-[13px] after:h-0.5 after:rounded-full after:bg-gradient-to-r after:from-glacier-400 after:to-sand-400 after:transition-opacity ${isActive(p) ? "text-navy-900 after:opacity-100" : "text-steel-700 after:opacity-0"}`;
 
   return (
     <header className="sticky top-0 z-40 glass-header">
@@ -73,7 +73,7 @@ export function SiteHeader({ t, locale }: { t: Dict; locale: Locale }) {
             {open && (
               <div id="services-menu" className="absolute start-0 top-full mt-2 grid w-[520px] grid-cols-2 gap-1 rounded-2xl p-3 shadow-[var(--shadow-lift)] glass-card">
                 {SERVICE_ORDER.map((s) => (
-                  <Link key={s} href={href(`/${s}`)} className="rounded-xl px-3 py-2.5 text-sm text-navy-800 hover:bg-ice-50">
+                  <Link key={s} href={href(`/${s}`)} className="rounded-xl px-3 py-2.5 text-sm text-navy-800 transition hover:bg-frost-100/70">
                     {t.serviceNames[s]}
                   </Link>
                 ))}

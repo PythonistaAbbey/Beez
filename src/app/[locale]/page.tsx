@@ -14,6 +14,7 @@ import { SectionHeading } from "@/components/ui/Section";
 import { SourceLink } from "@/components/ui/SourceLink";
 import { Icon } from "@/components/Icon";
 import { HeroArt } from "@/components/site/HeroArt";
+import { Journey } from "@/components/site/Journey";
 
 const HOME_SERVICES: ServiceSlug[] = ["logistics", "cold-chain", "medical", "warehousing", "fourth-party-logistics", "ecommerce", "technology", "corporate"];
 
@@ -89,7 +90,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             </div>
             <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-4">
               {t.home.proof.map((p) => (
-                <li key={p.v} className="rounded-2xl p-5 glass-card">
+                <li key={p.v} className="lift rounded-2xl p-5 glass-card">
                   <p className="text-2xl font-bold text-navy-800">{p.k}</p>
                   <p className="mt-1 text-sm text-steel-700">{p.v}</p>
                   <div className="mt-3"><SourceLink src={p.src} label={t.common.source} /></div>
@@ -107,7 +108,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           {HOME_SERVICES.map((slug, i) => (
             <li key={slug}>
               <Reveal delay={i * 0.04} className="h-full">
-                <Link href={href(`/${slug}`)} className="group flex h-full flex-col rounded-[var(--radius-card)] p-6 transition hover:-translate-y-0.5 hover:border-steel-300 hover:shadow-[var(--shadow-lift)] glass-card">
+                <Link href={href(`/${slug}`)} className="lift group flex h-full flex-col rounded-[var(--radius-card)] p-6 glass-card">
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl icon-tile">
                     <Icon name={s[slug].pillars[0].icon} className="h-5 w-5" />
                   </span>
@@ -128,6 +129,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </ul>
         </div>
       </section>
+
+      <Journey locale={locale} />
 
       {/* CONTROL TOWER PREVIEW */}
       <section className="bg-aurora text-white" aria-labelledby="tower-title">
@@ -172,7 +175,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* MEDICAL + CONTINUITY */}
       <section className="mx-auto grid max-w-7xl gap-6 px-4 py-20 sm:px-6 lg:grid-cols-2">
         <Reveal className="h-full">
-          <article className="glass-card flex h-full flex-col rounded-3xl p-8">
+          <article className="lift glass-card flex h-full flex-col rounded-3xl p-8">
             <HeartPulse className="h-8 w-8 text-frost-600" aria-hidden="true" />
             <h2 className="mt-5 text-2xl font-semibold">{t.home.medicalTitle}</h2>
             <p className="mt-3 flex-1 leading-relaxed text-steel-700">{t.home.medicalLead}</p>
@@ -181,7 +184,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </article>
         </Reveal>
         <Reveal delay={0.08} className="h-full">
-          <article className="glass-card flex h-full flex-col rounded-3xl p-8">
+          <article className="lift glass-card flex h-full flex-col rounded-3xl p-8">
             <LifeBuoy className="h-8 w-8 text-steel-600" aria-hidden="true" />
             <h2 className="mt-5 text-2xl font-semibold">{t.home.continuityTitle}</h2>
             <p className="mt-3 flex-1 leading-relaxed text-steel-700">{t.home.continuityLead}</p>
