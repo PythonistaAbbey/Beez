@@ -33,7 +33,7 @@ export function ExecutiveDeck({ slides, locale, labels }: { slides: Slide[]; loc
   const s = slides[i];
   const total = slides.reduce((a, x) => a + x.minutes, 0);
   return (
-    <div className="bg-navy-950 text-white" id="deck">
+    <div className="bg-aurora text-white" id="deck">
       <div className="mx-auto flex min-h-[calc(100vh-7rem)] max-w-6xl flex-col px-4 py-8 sm:px-6">
         <div className="flex items-center justify-between gap-4 text-xs text-steel-400">
           <span className="tabular" aria-live="polite">{fmtNumber(locale, i + 1)} {labels.of} {fmtNumber(locale, slides.length)} · ≈{fmtNumber(locale, Math.round(total))} {labels.minutes}</span>
@@ -47,17 +47,17 @@ export function ExecutiveDeck({ slides, locale, labels }: { slides: Slide[]; loc
         <section className="relative flex flex-1 items-center py-10" aria-roledescription="slide" aria-label={`${i + 1} / ${slides.length}`}>
           <AnimatePresence mode="wait">
             <motion.div key={i} initial={reduce ? false : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={reduce ? undefined : { opacity: 0, y: -12 }} transition={{ duration: 0.35 }} className="w-full">
-              <p className="eyebrow !text-frost-400">{s.kicker}</p>
+              <p className="eyebrow !text-sand-300">{s.kicker}</p>
               <h1 className={`mt-4 max-w-4xl font-bold tracking-tight text-balance ${i === 0 ? "text-5xl uppercase sm:text-7xl" : "text-4xl sm:text-5xl"}`}>{s.title}</h1>
               <ul className="mt-10 grid gap-4 md:grid-cols-3">
                 {s.points.map((p, k) => (
-                  <li key={p} className="rounded-2xl border border-white/10 bg-white/5 p-5 text-lg leading-snug text-steel-200">
+                  <li key={p} className="glass-dark rounded-2xl p-5 text-lg leading-snug text-steel-200">
                     <span className="mb-3 block text-sm font-bold text-frost-400 tabular">{fmtNumber(locale, k + 1, { minimumIntegerDigits: 2 })}</span>{p}
                   </li>
                 ))}
               </ul>
               {s.link && (
-                <Link href={`/${locale}${s.link.href}`} target="_blank" className="mt-8 inline-flex items-center gap-2 rounded-full bg-frost-400 px-5 py-2.5 font-semibold text-navy-950 hover:bg-frost-200">
+                <Link href={`/${locale}${s.link.href}`} target="_blank" className="mt-8 inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-semibold btn-glacier">
                   {labels.demo}: {s.link.label} <ExternalLink className="h-4 w-4" aria-hidden="true" />
                 </Link>
               )}
@@ -76,7 +76,7 @@ export function ExecutiveDeck({ slides, locale, labels }: { slides: Slide[]; loc
               <button key={k} type="button" onClick={() => setI(k)} aria-label={`${k + 1}`} aria-current={k === i ? "step" : undefined} className={`h-2.5 rounded-full transition-all ${k === i ? "w-8 bg-frost-400" : "w-2.5 bg-white/25 hover:bg-white/50"}`} />
             ))}
           </div>
-          <button type="button" onClick={() => go(1)} disabled={i === slides.length - 1} className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-semibold text-navy-900 disabled:opacity-30">
+          <button type="button" onClick={() => go(1)} disabled={i === slides.length - 1} className="btn-glacier inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-semibold disabled:opacity-30">
             {labels.next}<ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" />
           </button>
         </div>

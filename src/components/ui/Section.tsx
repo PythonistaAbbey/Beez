@@ -1,7 +1,7 @@
 export function SectionHeading({ eyebrow, title, lead, light = false, id }: { eyebrow?: string; title: string; lead?: string; light?: boolean; id?: string }) {
   return (
     <div className="max-w-3xl">
-      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+      {eyebrow && <p className={`eyebrow ${light ? "!text-sand-300" : ""}`}>{eyebrow}</p>}
       <h2 id={id} className={`mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl ${light ? "text-white" : "text-navy-900"}`}>{title}</h2>
       {lead && <p className={`mt-4 text-lg leading-relaxed ${light ? "text-steel-300" : "text-steel-700"}`}>{lead}</p>}
     </div>

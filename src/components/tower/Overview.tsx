@@ -41,7 +41,7 @@ export function Overview() {
     <div className="space-y-6">
       <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-5">
         {kpis.map(({ icon: I, label, value, tone }) => (
-          <li key={label} className="rounded-2xl border border-steel-200 bg-white p-4 shadow-[var(--shadow-card)]">
+          <li key={label} className="rounded-2xl p-4 glass-card">
             <I className="h-4 w-4 text-frost-600" aria-hidden="true" />
             <p className={`mt-2 text-2xl font-bold tabular ${tone ?? "text-navy-900"}`}>{value}</p>
             <p className="text-xs text-steel-600">{label}</p>
@@ -51,7 +51,7 @@ export function Overview() {
 
       <div className="grid gap-6 xl:grid-cols-[1.35fr_1fr]">
         <Card title={td.map.title}>
-          <div className="rounded-xl bg-navy-900 p-2">
+          <div className="rounded-xl bg-aurora p-2 ring-1 ring-white/10">
             <KsaMap routes={routes} locale={locale} selected={sel} onSelect={setSel} caption={td.map.caption} />
           </div>
           <ul className="mt-3 flex flex-wrap gap-4 text-xs text-steel-700">

@@ -5,14 +5,24 @@ Tokens live in `src/app/globals.css` (Tailwind 4 `@theme`). Components use the t
 ## Colour
 | Role | Token | Hex | Use |
 |---|---|---|---|
-| Authority | `navy-900` / `navy-950` | #0a1b38 / #050f22 | Hero, footer, primary buttons, dark panels |
+| Authority (midnight over the desert) | `navy-900` / `navy-950` | #071428 / #040a18 | Hero, footer, primary buttons, dark panels |
 | Structure | `steel-100…700` | #e9f0f7 … #3b5878 | Borders, secondary text, table chrome |
 | Clarity | `white`, `ice-50` | #ffffff / #f5f8fc | Page and card surfaces |
 | Cold accent | `frost-400` / `frost-600` | #2ec4c0 / #0b7a77 | Live states, links, eyebrows. 400 only on navy, 600 on light |
+| Cold chain (glacier) | `glacier-300` / `glacier-400` | #7ff3ee / #3ee6e0 | Shine on primary CTAs, live accents on dark |
+| Kingdom (desert sand) | `sand-300` / `sand-400` / `sand-700` | #e9c98a / #d9ad5f / #7a5a1c | Thin gold rules, eyebrows on dark, card rims. Used sparingly |
 | Status (reserved) | `ok`, `warn`, `alert` (+ `-bg`) | #17704a, #8f5a00, #c0392b | Always paired with an icon and a word, never colour alone |
 | Chart series | `series-1…4` | #2f68b0, #0f9592, #c47a1a, #8a5cc2 | Validated for CVD separation and 3:1 contrast on white |
 
 All text pairs were checked against WCAG AA (≥ 4.5:1); axe found no serious contrast issues after the final pass.
+
+## Glass and sheen
+Utilities in `globals.css` (`@layer components`, so Tailwind utilities still override them):
+- `bg-mesh` (light pages) and `bg-aurora` (dark heroes): layered radial gradients in glacier, sand and navy so glass has something to refract.
+- `glass-card`, `glass-dark`, `glass-header`: frosted surfaces with `backdrop-filter`, an inner highlight and a glacier → sand hairline rim.
+- `btn-glacier`, `btn-midnight`: gradient buttons with a highlight that sweeps across on hover and keyboard focus.
+- `text-ice-shine`: slowly moving metallic headline, dark backgrounds only. `rule-sand`: gold hairline divider. `icon-tile`: midnight tile with glacier icon.
+- Fallbacks: `prefers-reduced-transparency` swaps glass for solid surfaces, `forced-colors` drops decorative rims and gradient text, `prefers-reduced-motion` stops the shine and sweep.
 
 ## Type
 System UI stack for Latin; `Noto Kufi Arabic` → `Noto Sans Arabic` → `Geeza Pro` → `Segoe UI` → Tahoma for Arabic (`html[lang=ar]`). No web-font download, so first paint is fast. Headline style: uppercase, tight tracking, `text-balance` (Latin); Arabic drops tracking.

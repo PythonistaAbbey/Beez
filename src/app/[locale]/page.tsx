@@ -36,22 +36,23 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-navy-900 text-white" aria-labelledby="hero-title">
+      <section className="relative overflow-hidden bg-aurora text-white" aria-labelledby="hero-title">
         <div className="grid-bg absolute inset-0" aria-hidden="true" />
         <HeroArt />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 pb-20 pt-16 sm:px-6 lg:grid-cols-12 lg:pb-28 lg:pt-24">
           <div className="lg:col-span-6">
             <Reveal>
-              <p className="eyebrow !text-frost-400">{t.home.eyebrow}</p>
+              <p className="eyebrow !text-sand-300">{t.home.eyebrow}</p>
               <h1 id="hero-title" className="mt-5 text-5xl font-bold uppercase leading-[1.02] tracking-tight text-balance sm:text-6xl lg:text-7xl">
-                {t.home.title}
+                <span className="text-ice-shine">{t.home.title}</span>
               </h1>
+              <div className="rule-sand mt-6 w-40" aria-hidden="true" />
               <p className="mt-6 max-w-xl text-xl leading-relaxed text-steel-300">{t.home.lead}</p>
               <div className="mt-9 flex flex-wrap gap-3">
-                <Link href={href("/control-tower")} className="inline-flex items-center gap-2 rounded-full bg-frost-400 px-6 py-3.5 text-base font-semibold text-navy-950 hover:bg-frost-200">
+                <Link href={href("/control-tower")} className="inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold btn-glacier">
                   {t.home.ctaPrimary} {arrow}
                 </Link>
-                <Link href={href("/quote")} className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-base font-semibold text-white hover:bg-white/10">
+                <Link href={href("/quote")} className="inline-flex items-center gap-2 glass-dark rounded-full px-6 py-3.5 text-base font-semibold text-white hover:bg-white/10">
                   {t.home.ctaSecondary}
                 </Link>
               </div>
@@ -60,7 +61,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <div className="relative lg:col-span-6">
             <Reveal delay={0.15}>
               <KsaMap routes={routes} locale={locale} caption={`${t.common.demoData}: ${t.home.towerTitle}`} className="opacity-95" />
-              <div className="absolute bottom-0 end-0 w-[min(92%,360px)] rounded-2xl border border-white/10 bg-navy-950/85 p-4 shadow-[var(--shadow-lift)] backdrop-blur">
+              <div className="absolute bottom-0 end-0 w-[min(92%,360px)] glass-dark rounded-2xl p-4">
                 <div className="flex items-center justify-between text-xs">
                   <span className="inline-flex items-center gap-1.5 font-semibold text-frost-200">
                     <span className="h-2 w-2 rounded-full bg-frost-400" aria-hidden="true" /> {t.home.heroCard.label}
@@ -79,7 +80,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* PROOF: what Beez already publishes */}
-      <section className="border-b border-steel-200 bg-ice-50" aria-labelledby="proof-title">
+      <section className="bg-mesh" aria-labelledby="proof-title">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
@@ -88,7 +89,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             </div>
             <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-4">
               {t.home.proof.map((p) => (
-                <li key={p.v} className="rounded-2xl border border-steel-200 bg-white p-5 shadow-[var(--shadow-card)]">
+                <li key={p.v} className="rounded-2xl p-5 glass-card">
                   <p className="text-2xl font-bold text-navy-800">{p.k}</p>
                   <p className="mt-1 text-sm text-steel-700">{p.v}</p>
                   <div className="mt-3"><SourceLink src={p.src} label={t.common.source} /></div>
@@ -106,8 +107,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           {HOME_SERVICES.map((slug, i) => (
             <li key={slug}>
               <Reveal delay={i * 0.04} className="h-full">
-                <Link href={href(`/${slug}`)} className="group flex h-full flex-col rounded-[var(--radius-card)] border border-steel-200 bg-white p-6 shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:border-steel-300 hover:shadow-[var(--shadow-lift)]">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-navy-900 text-frost-400">
+                <Link href={href(`/${slug}`)} className="group flex h-full flex-col rounded-[var(--radius-card)] p-6 transition hover:-translate-y-0.5 hover:border-steel-300 hover:shadow-[var(--shadow-lift)] glass-card">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl icon-tile">
                     <Icon name={s[slug].pillars[0].icon} className="h-5 w-5" />
                   </span>
                   <h3 className="mt-5 text-lg font-semibold">{t.serviceNames[slug]}</h3>
@@ -122,14 +123,14 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <h3 className="text-sm font-semibold text-steel-600">{t.home.industriesTitle} <span className="ms-2"><SourceLink src="home" label={t.common.source} /></span></h3>
           <ul className="mt-3 flex flex-wrap gap-2">
             {t.home.industries.map((x) => (
-              <li key={x} className="rounded-full border border-steel-200 bg-ice-50 px-4 py-1.5 text-sm text-navy-800">{x}</li>
+              <li key={x} className="glass-card rounded-full px-4 py-1.5 text-sm text-navy-800">{x}</li>
             ))}
           </ul>
         </div>
       </section>
 
       {/* CONTROL TOWER PREVIEW */}
-      <section className="bg-navy-950 text-white" aria-labelledby="tower-title">
+      <section className="bg-aurora text-white" aria-labelledby="tower-title">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2">
           <Reveal>
             <SectionHeading id="tower-title" eyebrow={t.nav.tower} title={t.home.towerTitle} lead={t.home.towerLead} light />
@@ -140,19 +141,19 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 </li>
               ))}
             </ul>
-            <Link href={href("/control-tower")} className="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-navy-900 hover:bg-frost-100">
+            <Link href={href("/control-tower")} className="btn-glacier mt-9 inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold">
               {t.common.viewTower} {arrow}
             </Link>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+            <div className="glass-dark rounded-3xl p-5">
               <div className="grid grid-cols-3 gap-3">
                 {[
                   { icon: <Thermometer className="h-4 w-4" aria-hidden="true" />, k: `${fmtNumber(locale, k.inBand, { maximumFractionDigits: 1 })}%`, v: locale === "ar" ? "قراءات ضمن النطاق" : "Readings in band" },
                   { icon: <BellRing className="h-4 w-4" aria-hidden="true" />, k: fmtNumber(locale, k.openAlerts), v: locale === "ar" ? "تنبيهات مفتوحة" : "Open alerts" },
                   { icon: <HeartPulse className="h-4 w-4" aria-hidden="true" />, k: fmtNumber(locale, k.critical), v: locale === "ar" ? "شحنات طبية حرجة" : "Critical medical" },
                 ].map((kp) => (
-                  <div key={kp.v} className="rounded-2xl bg-navy-900 p-4">
+                  <div key={kp.v} className="glass-dark rounded-2xl p-4">
                     <span className="text-frost-400">{kp.icon}</span>
                     <p className="mt-2 text-2xl font-bold tabular">{kp.k}</p>
                     <p className="text-xs text-steel-400">{kp.v}</p>
@@ -171,7 +172,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* MEDICAL + CONTINUITY */}
       <section className="mx-auto grid max-w-7xl gap-6 px-4 py-20 sm:px-6 lg:grid-cols-2">
         <Reveal className="h-full">
-          <article className="flex h-full flex-col rounded-3xl border border-steel-200 bg-gradient-to-br from-white to-frost-100 p-8">
+          <article className="glass-card flex h-full flex-col rounded-3xl p-8">
             <HeartPulse className="h-8 w-8 text-frost-600" aria-hidden="true" />
             <h2 className="mt-5 text-2xl font-semibold">{t.home.medicalTitle}</h2>
             <p className="mt-3 flex-1 leading-relaxed text-steel-700">{t.home.medicalLead}</p>
@@ -180,7 +181,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </article>
         </Reveal>
         <Reveal delay={0.08} className="h-full">
-          <article className="flex h-full flex-col rounded-3xl border border-steel-200 bg-gradient-to-br from-white to-steel-100 p-8">
+          <article className="glass-card flex h-full flex-col rounded-3xl p-8">
             <LifeBuoy className="h-8 w-8 text-steel-600" aria-hidden="true" />
             <h2 className="mt-5 text-2xl font-semibold">{t.home.continuityTitle}</h2>
             <p className="mt-3 flex-1 leading-relaxed text-steel-700">{t.home.continuityLead}</p>
@@ -191,12 +192,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
       {/* CTA band */}
       <section className="px-4 pb-20 sm:px-6">
-        <div className="mx-auto flex max-w-7xl flex-col items-start gap-6 rounded-3xl bg-gradient-to-r from-navy-800 to-navy-600 p-10 text-white md:flex-row md:items-center md:justify-between">
+        <div className="mx-auto flex max-w-7xl flex-col items-start gap-6 relative overflow-hidden rounded-3xl bg-aurora p-10 text-white shadow-[var(--shadow-lift)] ring-1 ring-white/10 md:flex-row md:items-center md:justify-between">
           <div className="max-w-2xl">
             <h2 className="text-2xl font-semibold">{t.home.ctaBandTitle}</h2>
             <p className="mt-2 text-steel-200">{t.home.ctaBandLead}</p>
           </div>
-          <Link href={href("/executive")} className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-navy-900 hover:bg-frost-100">
+          <Link href={href("/executive")} className="btn-glacier inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3 font-semibold">
             <PlayCircle className="h-5 w-5" aria-hidden="true" /> {t.home.ctaBandButton}
           </Link>
         </div>

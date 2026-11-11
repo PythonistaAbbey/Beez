@@ -63,7 +63,7 @@ export function QuoteWizard({ t, locale }: { t: Dict; locale: Locale }) {
         <p className="mt-3 text-steel-700">{q.successBody}</p>
         <p className="mt-6 inline-block rounded-xl bg-ice-50 px-4 py-2 text-sm">{q.reference}: <span className="font-mono font-bold" dir="ltr">{done.reference}</span></p>
         <div className="mt-8">
-          <button type="button" className="rounded-full bg-navy-900 px-6 py-3 font-semibold text-white hover:bg-navy-700" onClick={() => { reset(); setStep(0); setDone(null); }}>{q.another}</button>
+          <button type="button" className="rounded-full px-6 py-3 font-semibold btn-midnight" onClick={() => { reset(); setStep(0); setDone(null); }}>{q.another}</button>
         </div>
       </div>
     );
@@ -72,7 +72,7 @@ export function QuoteWizard({ t, locale }: { t: Dict; locale: Locale }) {
   const v = getValues();
   return (
     <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[1fr_320px]">
-      <form onSubmit={onSubmit} noValidate className="rounded-3xl border border-steel-200 bg-white p-6 shadow-[var(--shadow-card)] sm:p-8">
+      <form onSubmit={onSubmit} noValidate className="rounded-3xl p-6 sm:p-8 glass-card">
         <ol className="mb-8 flex items-center gap-2" aria-label={q.title}>
           {q.steps.map((label, i) => (
             <li key={label} className="flex flex-1 items-center gap-2" aria-current={i === step ? "step" : undefined}>
@@ -146,9 +146,9 @@ export function QuoteWizard({ t, locale }: { t: Dict; locale: Locale }) {
         <div className="mt-8 flex items-center justify-between gap-3 border-t border-steel-200 pt-6">
           {step > 0 ? <button type="button" onClick={() => setStep((s) => s - 1)} className="rounded-full px-5 py-2.5 font-semibold text-steel-700 hover:bg-steel-100">{t.common.back}</button> : <span />}
           {step < 2 ? (
-            <button type="button" onClick={next} className="rounded-full bg-navy-900 px-6 py-2.5 font-semibold text-white hover:bg-navy-700">{t.common.next}</button>
+            <button type="button" onClick={next} className="rounded-full px-6 py-2.5 font-semibold btn-midnight">{t.common.next}</button>
           ) : (
-            <button type="submit" disabled={isSubmitting} className="inline-flex items-center gap-2 rounded-full bg-frost-500 px-6 py-2.5 font-semibold text-navy-950 hover:bg-frost-400 disabled:opacity-60">
+            <button type="submit" disabled={isSubmitting} className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-semibold disabled:opacity-60 btn-glacier">
               {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}{q.submit}
             </button>
           )}

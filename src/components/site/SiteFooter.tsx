@@ -10,10 +10,11 @@ export function SiteFooter({ t, locale }: { t: Dict; locale: Locale }) {
   const href = (p: string) => `/${locale}${p}`;
   return (
     <footer className="bg-navy-950 text-steel-300">
+      <div className="rule-sand" aria-hidden="true" />
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-14 sm:px-6 md:grid-cols-12 [&>*]:min-w-0">
         <div className="md:col-span-4">
           <Logo label="Beez" tag="Concept" light />
-          <section id="disclaimer" aria-labelledby="disclaimer-title" className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5">
+          <section id="disclaimer" aria-labelledby="disclaimer-title" className="mt-6 glass-dark rounded-2xl p-5">
             <h2 id="disclaimer-title" className="text-sm font-semibold text-white">{t.footer.disclaimerTitle}</h2>
             <p className="mt-2 text-sm leading-relaxed">{t.footer.disclaimer}</p>
           </section>

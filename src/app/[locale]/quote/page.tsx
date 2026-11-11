@@ -18,7 +18,7 @@ export default async function Page({ params }: P) {
   return (
     <>
       <PageHero eyebrow={t.quote.eyebrow} title={t.quote.title} lead={t.quote.lead} />
-      <div className="bg-ice-50"><QuoteWizard t={t} locale={locale} /></div>
+      <div className="bg-mesh"><QuoteWizard t={t} locale={locale} /></div>
     </>
   );
 }

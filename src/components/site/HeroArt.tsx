@@ -4,6 +4,7 @@ export function HeroArt() {
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
       <div className="absolute -top-40 start-1/3 h-[520px] w-[520px] rounded-full bg-frost-500/20 blur-3xl" />
       <div className="absolute -bottom-48 -start-24 h-[480px] w-[480px] rounded-full bg-navy-600/40 blur-3xl" />
+      <div className="absolute bottom-0 end-1/4 h-64 w-[36rem] rounded-full bg-sand-400/10 blur-3xl" />
       <svg viewBox="0 0 1200 220" className="absolute bottom-0 start-0 w-full opacity-[0.16]" preserveAspectRatio="xMidYMax meet">
         <g fill="none" stroke="#a6e9e6" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round">
           <path d="M0 200 H1200" />

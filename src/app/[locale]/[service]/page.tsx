@@ -42,7 +42,7 @@ export default async function ServicePage({ params }: P) {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-navy-900 text-white">
+      <section className="relative overflow-hidden bg-aurora text-white">
         <div className="grid-bg absolute inset-0" aria-hidden="true" />
         <div className="absolute -top-32 end-0 h-96 w-96 rounded-full bg-frost-500/20 blur-3xl" aria-hidden="true" />
         <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
@@ -67,7 +67,7 @@ export default async function ServicePage({ params }: P) {
           {c.pillars.map((p, i) => (
             <li key={p.title}>
               <Reveal delay={i * 0.05} className="h-full">
-                <div className="h-full rounded-[var(--radius-card)] border border-steel-200 bg-white p-6 shadow-[var(--shadow-card)]">
+                <div className="h-full rounded-[var(--radius-card)] p-6 glass-card">
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-frost-100 text-frost-600"><Icon name={p.icon} className="h-5 w-5" /></span>
                   <h2 className="mt-5 text-lg font-semibold">{p.title}</h2>
                   <p className="mt-2 text-sm leading-relaxed text-steel-700">{p.body}</p>
@@ -78,9 +78,9 @@ export default async function ServicePage({ params }: P) {
         </ul>
       </section>
 
-      <section className="bg-ice-50">
+      <section className="bg-mesh">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-2">
-          <div className="rounded-3xl border border-steel-200 bg-white p-8">
+          <div className="rounded-3xl p-8 glass-card">
             <h2 className="text-xl font-semibold">{t.common.stated}</h2>
             <ul className="mt-6 space-y-5">
               {c.stated.map((x) => (
@@ -104,7 +104,7 @@ export default async function ServicePage({ params }: P) {
                 </li>
               ))}
             </ul>
-            <Link href={href(RELATED[slug])} className="mt-8 inline-flex items-center gap-2 rounded-full bg-frost-400 px-5 py-2.5 text-sm font-semibold text-navy-950 hover:bg-frost-200">
+            <Link href={href(RELATED[slug])} className="mt-8 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold btn-glacier">
               {t.common.tryDemo} {arrow}
             </Link>
           </div>
@@ -115,7 +115,7 @@ export default async function ServicePage({ params }: P) {
 
       <section className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-4 py-14 sm:flex-row sm:items-center sm:px-6">
         <p className="text-lg font-semibold">{t.home.ctaSecondary}</p>
-        <Link href={href("/quote")} className="inline-flex items-center gap-2 rounded-full bg-navy-900 px-6 py-3 font-semibold text-white hover:bg-navy-700">{t.nav.quote} {arrow}</Link>
+        <Link href={href("/quote")} className="inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold btn-midnight">{t.nav.quote} {arrow}</Link>
       </section>
     </>
   );

@@ -21,7 +21,7 @@ export default async function Page({ params, searchParams }: P) {
   return (
     <>
       <PageHero eyebrow={t.support.eyebrow} title={t.support.title} lead={t.support.lead} />
-      <div className="bg-ice-50"><SupportCenter t={t} locale={locale} prefillShipment={prefill} /></div>
+      <div className="bg-mesh"><SupportCenter t={t} locale={locale} prefillShipment={prefill} /></div>
     </>
   );
 }

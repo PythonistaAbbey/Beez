@@ -19,7 +19,7 @@ export default async function Page({ params, searchParams }: P) {
   return (
     <>
       <PageHero eyebrow={t.tracking.eyebrow} title={t.tracking.title} lead={t.tracking.lead} />
-      <div className="bg-ice-50"><TrackingDemo t={t} locale={locale} initialId={id?.slice(0, 20)} /></div>
+      <div className="bg-mesh"><TrackingDemo t={t} locale={locale} initialId={id?.slice(0, 20)} /></div>
     </>
   );
 }

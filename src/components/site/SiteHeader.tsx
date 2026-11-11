@@ -49,7 +49,7 @@ export function SiteHeader({ t, locale }: { t: Dict; locale: Locale }) {
     `rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-steel-100 ${isActive(p) ? "text-navy-900" : "text-steel-700"}`;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-steel-200/70 bg-white/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 glass-header">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6">
         <Link href={href("")} className="shrink-0" aria-label={`Beez — ${t.banner.short}`}>
           <Logo label="Beez" tag="Concept" />
@@ -71,7 +71,7 @@ export function SiteHeader({ t, locale }: { t: Dict; locale: Locale }) {
               <ChevronDown className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} aria-hidden="true" />
             </button>
             {open && (
-              <div id="services-menu" className="absolute start-0 top-full mt-2 grid w-[520px] grid-cols-2 gap-1 rounded-2xl border border-steel-200 bg-white p-3 shadow-[var(--shadow-lift)]">
+              <div id="services-menu" className="absolute start-0 top-full mt-2 grid w-[520px] grid-cols-2 gap-1 rounded-2xl p-3 shadow-[var(--shadow-lift)] glass-card">
                 {SERVICE_ORDER.map((s) => (
                   <Link key={s} href={href(`/${s}`)} className="rounded-xl px-3 py-2.5 text-sm text-navy-800 hover:bg-ice-50">
                     {t.serviceNames[s]}
@@ -96,7 +96,7 @@ export function SiteHeader({ t, locale }: { t: Dict; locale: Locale }) {
             <Globe className="h-4 w-4" aria-hidden="true" />
             {t.otherLang}
           </Link>
-          <Link href={href("/quote")} className="hidden rounded-full bg-navy-900 px-4 py-2 text-sm font-semibold text-white hover:bg-navy-700 sm:inline-flex">
+          <Link href={href("/quote")} className="hidden rounded-full px-4 py-2 text-sm font-semibold sm:inline-flex btn-midnight">
             {t.nav.quote}
           </Link>
           <button

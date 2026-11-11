@@ -52,7 +52,7 @@ export function SupportCenter({ t, locale, prefillShipment }: { t: Dict; locale:
   return (
     <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[1fr_380px]">
       <div className="space-y-8">
-        <section className="rounded-3xl border border-steel-200 bg-white p-6 shadow-[var(--shadow-card)] sm:p-8" aria-labelledby="report-title">
+        <section className="rounded-3xl p-6 sm:p-8 glass-card" aria-labelledby="report-title">
           <h2 id="report-title" className="text-xl font-semibold">{s.reportTitle}</h2>
           {created && <p role="status" className="mt-3 flex items-center gap-2 rounded-xl bg-ok-bg p-3 text-sm text-ok"><CheckCircle2 className="h-4 w-4" aria-hidden="true" />{s.created}: <span className="font-mono" dir="ltr">{created}</span></p>}
           <form onSubmit={onSubmit} noValidate className="mt-5 grid gap-5 sm:grid-cols-2">
@@ -77,14 +77,14 @@ export function SupportCenter({ t, locale, prefillShipment }: { t: Dict; locale:
               <input type="file" accept="image/*" multiple className="mt-1.5 block w-full text-sm file:me-3 file:rounded-lg file:border-0 file:bg-steel-100 file:px-3 file:py-2 file:font-semibold" onChange={(e) => { e.currentTarget.value = ""; }} />
             </label>
             <div className="sm:col-span-2">
-              <button type="submit" disabled={isSubmitting} className="inline-flex items-center gap-2 rounded-full bg-navy-900 px-6 py-3 font-semibold text-white hover:bg-navy-700 disabled:opacity-60">
+              <button type="submit" disabled={isSubmitting} className="inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold disabled:opacity-60 btn-midnight">
                 {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}{s.submit}
               </button>
             </div>
           </form>
         </section>
 
-        <section className="rounded-3xl border border-steel-200 bg-white p-6 shadow-[var(--shadow-card)] sm:p-8" aria-labelledby="tickets-title">
+        <section className="rounded-3xl p-6 sm:p-8 glass-card" aria-labelledby="tickets-title">
           <h2 id="tickets-title" className="text-xl font-semibold">{s.ticketsTitle}</h2>
           {tickets.length === 0 && <p className="mt-3 text-sm text-steel-600">{s.noTickets}</p>}
           <ul className="mt-4 space-y-3" data-testid="ticket-list">
@@ -132,7 +132,7 @@ export function SupportCenter({ t, locale, prefillShipment }: { t: Dict; locale:
           </ul>
           <div className="mt-4 [&_a]:text-steel-300"><SourceLink src="service" label={t.common.source} /></div>
         </section>
-        <section className="rounded-3xl border border-steel-200 bg-white p-6" aria-labelledby="faq-title">
+        <section className="rounded-3xl p-6 glass-card" aria-labelledby="faq-title">
           <h2 id="faq-title" className="font-semibold">{s.faqTitle}</h2>
           <div className="mt-3 divide-y divide-steel-200">
             {s.faq.map((f) => (

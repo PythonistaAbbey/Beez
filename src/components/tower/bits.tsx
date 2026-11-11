@@ -36,7 +36,7 @@ export function TempPill({ s }: { s: Shipment }) {
 
 export function Card({ title, action, children, className = "" }: { title?: string; action?: React.ReactNode; children: React.ReactNode; className?: string }) {
   return (
-    <section className={`min-w-0 rounded-2xl border border-steel-200 bg-white p-5 shadow-[var(--shadow-card)] ${className}`}>
+    <section className={`glass-card min-w-0 rounded-2xl p-5 ${className}`}>
       {(title || action) && (
         <div className="mb-4 flex items-center justify-between gap-3">
           {title && <h3 className="text-base font-semibold text-navy-900">{title}</h3>}
@@ -50,7 +50,7 @@ export function Card({ title, action, children, className = "" }: { title?: stri
 
 export function Btn({ children, variant = "secondary", className = "", ...props }: React.ButtonHTMLAttributes<HTMLButtonElement> & { variant?: "primary" | "secondary" | "ghost" | "danger" }) {
   const v = {
-    primary: "bg-navy-900 text-white hover:bg-navy-700 disabled:bg-steel-300",
+    primary: "btn-midnight disabled:opacity-50",
     secondary: "border border-steel-300 bg-white text-navy-800 hover:bg-ice-50 disabled:text-steel-400",
     ghost: "text-steel-700 hover:bg-steel-100",
     danger: "bg-alert text-white hover:brightness-110",

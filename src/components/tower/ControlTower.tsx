@@ -83,7 +83,7 @@ export function ControlTower({ locale, t, initialTab }: { locale: Locale; t: Dic
 
   return (
     <Ctx.Provider value={ctx}>
-      <div className="min-h-[calc(100vh-7rem)] bg-ice-50">
+      <div className="min-h-[calc(100vh-7rem)] bg-mesh">
         <TopBar />
         <div className="mx-auto grid max-w-[1500px] gap-6 px-4 py-6 sm:px-6 lg:grid-cols-[220px_1fr]">
           <div role="tablist" aria-label={td.title} aria-orientation="vertical" className="-mx-4 flex gap-1 overflow-x-auto px-4 pb-1 lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0">
@@ -101,7 +101,7 @@ export function ControlTower({ locale, t, initialTab }: { locale: Locale; t: Dic
                   tabIndex={sel ? 0 : -1}
                   onClick={() => goTab(id)}
                   onKeyDown={(e) => onTabKey(e, i)}
-                  className={`flex shrink-0 items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-medium transition ${sel ? "bg-navy-900 text-white shadow" : "text-steel-700 hover:bg-white"}`}
+                  className={`flex shrink-0 items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-medium transition ${sel ? "btn-midnight" : "text-steel-700 hover:bg-white/70"}`}
                 >
                   <I className={`h-4 w-4 ${sel ? "text-frost-400" : ""}`} aria-hidden="true" />
                   <span className="whitespace-nowrap">{td.tabs[id]}</span>
@@ -135,7 +135,7 @@ function TopBar() {
   const { time } = useFmt();
   const now = new Date(SIM_EPOCH + state.simMinutes * 60_000).toISOString();
   return (
-    <div className="border-b border-steel-200 bg-white">
+    <div className="glass-header">
       <div className="mx-auto flex max-w-[1500px] flex-wrap items-center gap-x-6 gap-y-3 px-4 py-4 sm:px-6">
         <div className="min-w-0">
           <h1 className="text-2xl font-semibold tracking-tight">{td.title}</h1>

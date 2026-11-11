@@ -46,7 +46,7 @@ export function TrackingDemo({ t, locale, initialId }: { t: Dict; locale: Locale
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
-      <form onSubmit={(e) => { e.preventDefault(); void track(id); }} className="rounded-3xl border border-steel-200 bg-white p-6 shadow-[var(--shadow-card)]" noValidate>
+      <form onSubmit={(e) => { e.preventDefault(); void track(id); }} className="rounded-3xl p-6 glass-card" noValidate>
         <label htmlFor="track-id" className="text-sm font-semibold">{t.tracking.label}</label>
         <div className="mt-2 flex flex-col gap-3 sm:flex-row">
           <div className="relative flex-1">
@@ -64,7 +64,7 @@ export function TrackingDemo({ t, locale, initialId }: { t: Dict; locale: Locale
               className="w-full rounded-xl border border-steel-300 py-3 pe-3 ps-10 font-mono text-base uppercase aria-[invalid=true]:border-alert"
             />
           </div>
-          <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-xl bg-navy-900 px-6 py-3 font-semibold text-white hover:bg-navy-700">
+          <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 font-semibold btn-midnight">
             {state === "loading" && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />} {t.tracking.button}
           </button>
         </div>
@@ -83,7 +83,7 @@ export function TrackingDemo({ t, locale, initialId }: { t: Dict; locale: Locale
         {state === "ok" && s && (
           <article className="mt-8 grid gap-6 lg:grid-cols-[1fr_320px]" data-testid="tracking-result">
             <div className="space-y-6">
-              <div className="rounded-3xl border border-steel-200 bg-white p-6 shadow-[var(--shadow-card)]">
+              <div className="rounded-3xl p-6 glass-card">
                 <div className="flex flex-wrap items-center gap-3">
                   <h2 className="font-mono text-xl font-bold" dir="ltr">{s.id}</h2>
                   <Badge tone={s.status === "delivered" ? "ok" : s.delayMinutes >= 30 ? "warn" : "frost"}>{t.status[s.status]}</Badge>
@@ -100,7 +100,7 @@ export function TrackingDemo({ t, locale, initialId }: { t: Dict; locale: Locale
                   <div><dt className="text-xs text-steel-600">{t.tracking.band}</dt><dd className="text-lg font-semibold">{t.profiles[s.profile.id]}</dd></div>
                 </dl>
               </div>
-              <div className="rounded-3xl border border-steel-200 bg-white p-6 shadow-[var(--shadow-card)]">
+              <div className="rounded-3xl p-6 glass-card">
                 <h3 className="font-semibold">{t.tracking.temperature}</h3>
                 {excursions > 0 && <p className="mt-1 text-sm text-alert">▲ {fmtNumber(locale, excursions)} × {locale === "ar" ? "قراءة خارج النطاق، تم تنبيه السائق والعميل (محاكاة)" : "readings outside the band; driver and customer alerted (simulated)"}</p>}
                 <div className="mt-3">
@@ -110,7 +110,7 @@ export function TrackingDemo({ t, locale, initialId }: { t: Dict; locale: Locale
               </div>
             </div>
             <aside className="space-y-6">
-              <div className="rounded-3xl border border-steel-200 bg-white p-6 shadow-[var(--shadow-card)]">
+              <div className="rounded-3xl p-6 glass-card">
                 <h3 className="font-semibold">{t.tracking.timeline}</h3>
                 <ol className="mt-4">
                   {s.timeline.map((e, i) => (
@@ -133,7 +133,7 @@ export function TrackingDemo({ t, locale, initialId }: { t: Dict; locale: Locale
                 </div>
               )}
               <Link href={`/${locale}/support?shipment=${s.id}`} className="flex items-center justify-center rounded-xl border border-steel-300 bg-white px-4 py-3 font-semibold hover:bg-ice-50">{t.tracking.reportIssue}</Link>
-              <Link href={`/${locale}/control-tower?tab=shipments`} className="flex items-center justify-center rounded-xl bg-navy-900 px-4 py-3 font-semibold text-white hover:bg-navy-700">{t.common.viewTower}</Link>
+              <Link href={`/${locale}/control-tower?tab=shipments`} className="flex items-center justify-center rounded-xl px-4 py-3 font-semibold btn-midnight">{t.common.viewTower}</Link>
             </aside>
           </article>
         )}
