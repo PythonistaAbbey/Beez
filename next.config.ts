@@ -15,6 +15,8 @@ const isStatic = process.env.STATIC_EXPORT === "1";
 const nextConfig: NextConfig = isStatic ? {
   output: "export",
   trailingSlash: true,
+  // GitHub Pages serves a project site under /<repo>; the workflow sets BASE_PATH.
+  basePath: process.env.BASE_PATH || undefined,
   images: { unoptimized: true },
   env: { NEXT_PUBLIC_STATIC_DEMO: "1" },
 } : {

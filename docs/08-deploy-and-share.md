@@ -25,3 +25,11 @@ Use the drafts in `docs/06-outreach-emails.md`. Fill in your own name, title and
 ## Alternatives
 - **Netlify:** import the repo; the Next.js runtime is detected automatically.
 - **Any Node host:** `npm ci && npm run build && npm start` (port 3000, Node 20 or later).
+
+## GitHub Pages (built in)
+`.github/workflows/pages.yml` builds the static preview and publishes it on every push to `main`.
+1. In the repository, open **Settings → Pages** and set **Source** to **GitHub Actions** (one time).
+2. Open **Actions → Deploy preview to GitHub Pages → Run workflow** (or push to `main`).
+3. The site appears at `https://<owner>.github.io/<repo>/`, for example `https://pythonistaabbey.github.io/Beez/`.
+
+GitHub Pages for a private repository needs a paid GitHub plan. On a free plan the repository must be public, which also makes the docs (proposal and email drafts) public.
