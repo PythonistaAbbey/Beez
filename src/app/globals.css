@@ -1,0 +1,328 @@
+@import "tailwindcss";
+
+/*
+ * Beez Control Tower concept — design tokens.
+ * Navy carries authority, white carries clarity, steel blue structures the
+ * interface, and turquoise is reserved for "cold" accents and live states.
+ */
+@theme {
+  --color-navy-950: #040a18;
+  --color-navy-900: #071428;
+  --color-navy-800: #0d2244;
+  --color-navy-700: #163463;
+  --color-navy-600: #24508e;
+
+  --color-steel-700: #3b5878;
+  --color-steel-600: #4a6f96;
+  --color-steel-500: #55789c;
+  --color-steel-400: #8aa7c6;
+  --color-steel-300: #b3c7dc;
+  --color-steel-200: #d5e1ee;
+  --color-steel-100: #e9f0f7;
+  --color-ice-50: #f5f8fc;
+
+  --color-frost-600: #0b7a77;
+  --color-frost-500: #14a8a6;
+  --color-frost-400: #2ec4c0;
+  --color-frost-200: #a6e9e6;
+  --color-frost-100: #dff7f6;
+  --color-glacier-300: #7ff3ee;
+  --color-glacier-400: #3ee6e0;
+
+  /* Desert-sand gold: a restrained nod to the Kingdom's landscape */
+  --color-sand-200: #f6e4bf;
+  --color-sand-300: #e9c98a;
+  --color-sand-400: #d9ad5f;
+  --color-sand-700: #7a5a1c;
+
+  /* Status (reserved: never used as a series colour) */
+  --color-ok: #17704a;
+  --color-ok-bg: #e3f4ec;
+  --color-warn: #8f5a00;
+  --color-warn-bg: #fdf1d8;
+  --color-alert: #c0392b;
+  --color-alert-bg: #fbe6e3;
+
+  /* Chart categorical order (validated: light surface, CVD-safe) */
+  --color-series-1: #2f68b0;
+  --color-series-2: #0f9592;
+  --color-series-3: #c47a1a;
+  --color-series-4: #8a5cc2;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-arabic: "Noto Kufi Arabic", "Noto Sans Arabic", "Geeza Pro", "Segoe UI", Tahoma, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --radius-card: 1rem;
+  --shadow-card: 0 1px 2px rgb(10 27 56 / 0.06), 0 8px 24px -12px rgb(10 27 56 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(10 27 56 / 0.08), 0 24px 48px -20px rgb(10 27 56 / 0.35);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: #f4f8fc;
+  color: var(--color-navy-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+html[lang="ar"] body {
+  font-family: var(--font-arabic);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-frost-400);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--color-navy-900);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-frost-600);
+}
+html[lang="ar"] .eyebrow {
+  letter-spacing: 0;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.6); opacity: 0.8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+.pulse-ring {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: pulse-ring 2.2s ease-out infinite;
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: -24; }
+}
+.route-flow {
+  stroke-dasharray: 4 8;
+  animation: dash 1.6s linear infinite;
+}
+
+@layer components {
+/* ───────────── Glass & sheen system ─────────────
+ * Palette story: midnight navy (night over the desert), glacier turquoise
+ * (the cold chain), ice white, steel blue, and a thin line of desert-sand gold.
+ */
+
+/* Soft light mesh behind light pages so glass has something to refract */
+.bg-mesh {
+  background:
+    radial-gradient(60rem 40rem at 10% -10%, rgb(62 230 224 / 0.16), transparent 60%),
+    radial-gradient(50rem 36rem at 110% 10%, rgb(217 173 95 / 0.14), transparent 60%),
+    radial-gradient(60rem 50rem at 50% 120%, rgb(36 80 142 / 0.12), transparent 60%),
+    linear-gradient(180deg, #f4f8fc 0%, #eef4fa 100%);
+}
+
+/* Night aurora behind dark heroes */
+.bg-aurora {
+  background:
+    radial-gradient(42rem 30rem at 85% -5%, rgb(62 230 224 / 0.28), transparent 60%),
+    radial-gradient(36rem 28rem at 0% 100%, rgb(36 80 142 / 0.55), transparent 65%),
+    radial-gradient(28rem 20rem at 60% 110%, rgb(217 173 95 / 0.20), transparent 70%),
+    linear-gradient(160deg, #071428 0%, #0d2244 55%, #071428 100%);
+}
+
+.glass-card {
+  position: relative;
+  background: linear-gradient(145deg, rgb(255 255 255 / 0.86), rgb(255 255 255 / 0.66));
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgb(255 255 255 / 0.9);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.95),
+    0 1px 2px rgb(7 20 40 / 0.05),
+    0 18px 40px -22px rgb(7 20 40 / 0.35);
+}
+.glass-card::after {
+  /* hairline gradient rim: glacier → transparent → sand */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgb(62 230 224 / 0.55), rgb(179 199 220 / 0.25) 45%, rgb(217 173 95 / 0.45));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+
+.glass-dark {
+  position: relative;
+  background: linear-gradient(145deg, rgb(255 255 255 / 0.10), rgb(255 255 255 / 0.03));
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgb(255 255 255 / 0.14);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 30px 60px -30px rgb(0 0 0 / 0.6);
+}
+
+.glass-header {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.82), rgb(255 255 255 / 0.62));
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: inset 0 -1px 0 rgb(179 199 220 / 0.6), 0 10px 30px -20px rgb(7 20 40 / 0.4);
+}
+
+/* Shiny buttons: gradient body + travelling highlight on hover/focus */
+.btn-glacier,
+.btn-midnight {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.btn-glacier {
+  color: #04121c;
+  background: linear-gradient(135deg, #7ff3ee 0%, #3ee6e0 45%, #14a8a6 100%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.7), 0 10px 28px -10px rgb(20 168 166 / 0.75);
+}
+.btn-midnight {
+  color: #fff;
+  background: linear-gradient(135deg, #24508e 0%, #0d2244 55%, #071428 100%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.22), 0 10px 26px -12px rgb(7 20 40 / 0.8);
+}
+.btn-glacier::before,
+.btn-midnight::before {
+  content: "";
+  position: absolute;
+  inset: -2px auto -2px -60%;
+  width: 45%;
+  background: linear-gradient(100deg, transparent, rgb(255 255 255 / 0.55), transparent);
+  transform: skewX(-20deg);
+  transition: inset-inline-start 0.7s ease;
+  z-index: -1;
+}
+.btn-glacier:hover,
+.btn-midnight:hover,
+.btn-glacier:focus-visible,
+.btn-midnight:focus-visible {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+.btn-glacier:hover::before,
+.btn-midnight:hover::before,
+.btn-glacier:focus-visible::before,
+.btn-midnight:focus-visible::before {
+  inset-inline-start: 120%;
+}
+
+/* Metallic headline: ice → glacier, used on dark backgrounds only */
+.text-ice-shine {
+  background: linear-gradient(100deg, #ffffff 0%, #e6f4ff 35%, #7ff3ee 60%, #ffffff 85%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 8s ease-in-out infinite;
+}
+@keyframes shine {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Gold hairline divider */
+.rule-sand {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d9ad5f, transparent);
+}
+
+.icon-tile {
+  background: linear-gradient(145deg, #163463, #071428);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 8px 18px -8px rgb(7 20 40 / 0.6);
+  color: #3ee6e0;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass-card, .glass-header { background: #ffffff; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .glass-dark { background: #0d2244; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (forced-colors: active) {
+  .glass-card::after { display: none; }
+  .text-ice-shine { color: CanvasText; background: none; }
+}
+}
+
+@layer components {
+/* Hover lift for interactive glass cards */
+.lift {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+.lift:hover,
+.lift:focus-within {
+  transform: translateY(-4px);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.95),
+    0 2px 4px rgb(7 20 40 / 0.06),
+    0 30px 60px -28px rgb(20 168 166 / 0.45);
+}
+
+/* Glacier → sand connector line */
+.grad-line {
+  background: linear-gradient(90deg, transparent, #3ee6e0 15%, #8aa7c6 50%, #d9ad5f 85%, transparent);
+}
+
+/* Slow float for hero visuals and glowing orbs */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-slow { animation: float-slow 7s ease-in-out infinite; }
+@keyframes orb {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.9; }
+  50% { transform: translate(-24px, -18px) scale(1.08); opacity: 1; }
+}
+.orb { animation: orb 12s ease-in-out infinite; }
+}
+@layer components {
+.glass-card.glass-solid { background: linear-gradient(145deg, #ffffff, #f4f8fc); }
+}
