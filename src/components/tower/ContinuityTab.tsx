@@ -93,10 +93,10 @@ export function ContinuityTab() {
           {delayed.length === 0 ? (
             <p className="text-sm text-steel-600">{c.noneDelayed}</p>
           ) : (
-            <ul className="space-y-2" role="listbox" aria-label={c.delayed}>
+            <ul className="space-y-2" aria-label={c.delayed}>
               {delayed.map((s) => (
-                <li key={s.id} role="option" aria-selected={sel?.id === s.id}>
-                  <button type="button" onClick={() => setSelId(s.id)} className={`flex w-full flex-wrap items-center gap-2 rounded-xl border p-3 text-start text-sm ${sel?.id === s.id ? "border-navy-700 bg-ice-50" : "border-steel-200 hover:bg-ice-50"}`}>
+                <li key={s.id} data-testid={`delayed-${s.id}`}>
+                  <button type="button" aria-pressed={sel?.id === s.id} onClick={() => setSelId(s.id)} className={`flex w-full flex-wrap items-center gap-2 rounded-xl border p-3 text-start text-sm ${sel?.id === s.id ? "border-navy-700 bg-ice-50" : "border-steel-200 hover:bg-ice-50"}`}>
                     <span className="font-mono font-semibold" dir="ltr">{s.id}</span>
                     {s.priority === "critical" && <Badge tone="navy">{t.priority.critical}</Badge>}
                     <StatusBadge s={s} />

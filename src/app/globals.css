@@ -14,23 +14,23 @@
 
   --color-steel-700: #3b5878;
   --color-steel-600: #4a6f96;
-  --color-steel-500: #6488ad;
+  --color-steel-500: #55789c;
   --color-steel-400: #8aa7c6;
   --color-steel-300: #b3c7dc;
   --color-steel-200: #d5e1ee;
   --color-steel-100: #e9f0f7;
   --color-ice-50: #f5f8fc;
 
-  --color-frost-600: #0f8f8c;
+  --color-frost-600: #0b7a77;
   --color-frost-500: #14a8a6;
   --color-frost-400: #2ec4c0;
   --color-frost-200: #a6e9e6;
   --color-frost-100: #dff7f6;
 
   /* Status (reserved: never used as a series colour) */
-  --color-ok: #1e8a5a;
+  --color-ok: #17704a;
   --color-ok-bg: #e3f4ec;
-  --color-warn: #a76a00;
+  --color-warn: #8f5a00;
   --color-warn-bg: #fdf1d8;
   --color-alert: #c0392b;
   --color-alert-bg: #fbe6e3;

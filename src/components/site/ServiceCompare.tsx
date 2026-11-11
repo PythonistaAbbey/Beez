@@ -24,7 +24,7 @@ export function ServiceCompare({ t }: { t: Dict }) {
                   const Tag = i === 0 ? "th" : "td";
                   return (
                     <Tag key={i} scope={i === 0 ? "row" : undefined} className={`px-4 py-3 text-start ${i === 0 ? "font-medium text-navy-900" : ""} ${i === r.length - 1 ? "bg-frost-100/50 text-navy-800" : ""}`}>
-                      {isTick ? <span className="font-bold text-ok">✓ <span className="sr-only">yes</span></span> : isDash ? <span className="text-steel-400">— <span className="sr-only">not listed</span></span> : cell}
+                      {isTick ? <span className="font-bold text-ok">✓ <span className="sr-only">yes</span></span> : isDash ? <span className="text-steel-600">— <span className="sr-only">not listed</span></span> : cell}
                     </Tag>
                   );
                 })}
