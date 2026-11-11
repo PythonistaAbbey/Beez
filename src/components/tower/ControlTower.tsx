@@ -34,7 +34,7 @@ const TABS: { id: TabId; icon: typeof Truck }[] = [
   { id: "account", icon: Building2 },
 ];
 
-export function ControlTower({ locale, t, initialTab }: { locale: Locale; t: Dict; initialTab: TabId }) {
+export function ControlTower({ locale, t, initialTab, tabs }: { locale: Locale; t: Dict; initialTab: TabId; tabs?: TabId[] }) {
   const data = useMemo(() => getDataset(), []);
   const [state, dispatch] = useReducer(towerReducer, data, initialState);
   const [tab, setTab] = useState<TabId>(initialTab);
@@ -43,6 +43,12 @@ export function ControlTower({ locale, t, initialTab }: { locale: Locale; t: Dic
   const [live, setLive] = useState("");
   const td = TOWER[locale];
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+
+  // Deep links: honour ?tab= after hydration.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("tab") as TabId | null;
+    if (q && (tabs ?? TABS.map((x) => x.id)).includes(q)) setTab(q);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Simulation clock: 1 real second = `speed` simulated minutes.
   useEffect(() => {

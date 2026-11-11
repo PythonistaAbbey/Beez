@@ -10,6 +10,7 @@ import type { Locale } from "@/lib/data/types";
 import { CITIES } from "@/lib/data/geo";
 import { CITY_IDS, INDUSTRY_IDS, PROFILE_IDS, SERVICE_IDS, planningIndex, quoteSchemas, type QuoteData, type QuoteInput } from "@/lib/schemas";
 import { fmtNumber } from "@/lib/i18n";
+import { demoFetch } from "@/lib/demoFetch";
 
 const STEP_FIELDS: (keyof QuoteInput)[][] = [
   ["company", "contactName", "email", "phone"],
@@ -42,7 +43,7 @@ export function QuoteWizard({ t, locale }: { t: Dict; locale: Locale }) {
   };
   const onSubmit = handleSubmit(async (data) => {
     setServerError(false);
-    const res = await fetch("/api/demo/quotes", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+    const res = await demoFetch("/api/demo/quotes", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
     if (!res.ok) { setServerError(true); return; }
     const json = (await res.json()) as { data: { reference: string } };
     setDone({ reference: json.data.reference });

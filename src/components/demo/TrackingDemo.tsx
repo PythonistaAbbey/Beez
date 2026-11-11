@@ -10,6 +10,7 @@ import { TRACKING_ID } from "@/lib/schemas";
 import { fmtNumber, fmtTime } from "@/lib/i18n";
 import { TempChart } from "@/components/charts/TempChart";
 import { Badge } from "@/components/ui/Section";
+import { demoFetch } from "@/lib/demoFetch";
 import { Icon } from "@/components/Icon";
 import { PREMIUM } from "@/content/premium";
 
@@ -26,7 +27,7 @@ export function TrackingDemo({ t, locale, initialId }: { t: Dict; locale: Locale
     if (!TRACKING_ID.test(v)) { setState("invalid"); setS(null); return; }
     setState("loading");
     try {
-      const res = await fetch(`/api/demo/shipments/${encodeURIComponent(v)}`);
+      const res = await demoFetch(`/api/demo/shipments/${encodeURIComponent(v)}`);
       if (!res.ok) { setState("notfound"); setS(null); return; }
       const json = (await res.json()) as { data: Shipment };
       setS(json.data);
@@ -39,7 +40,10 @@ export function TrackingDemo({ t, locale, initialId }: { t: Dict; locale: Locale
     }
   };
 
-  useEffect(() => { if (initialId) void track(initialId); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    const q = initialId ?? new URLSearchParams(window.location.search).get("id")?.slice(0, 20);
+    if (q) void track(q);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const last = s?.readings.at(-1);
   const out = s && last ? last.celsius > s.profile.max || last.celsius < s.profile.min : false;

@@ -12,10 +12,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return isLocale(locale) ? { title: TOWER[locale].title } : {};
 }
 
-export default async function Page({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams: Promise<{ tab?: string }> }) {
+// The ?tab= query is read on the client so the page can be prerendered (and exported as static files).
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const { tab } = await searchParams;
   if (!isLocale(locale)) notFound();
-  const initialTab = TABS.includes(tab as TabId) ? (tab as TabId) : "overview";
-  return <ControlTower locale={locale} t={getDict(locale)} initialTab={initialTab} />;
+  return <ControlTower locale={locale} t={getDict(locale)} initialTab="overview" tabs={TABS} />;
 }

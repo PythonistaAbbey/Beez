@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle2, Clock, Loader2, Mail, MapPin, MessageSquare, Phone } from "lucide-react";
 import type { Dict } from "@/content/en";
 import type { Locale, SupportTicket } from "@/lib/data/types";
 import { TICKETS } from "@/lib/data/dataset";
-import { ticketSchema, type TicketInput } from "@/lib/schemas";
+import { TRACKING_ID, ticketSchema, type TicketInput } from "@/lib/schemas";
+import { demoFetch } from "@/lib/demoFetch";
 import { fmtTime } from "@/lib/i18n";
 import { SourceLink } from "@/components/ui/SourceLink";
 import { Badge } from "@/components/ui/Section";
@@ -23,8 +24,15 @@ export function SupportCenter({ t, locale, prefillShipment }: { t: Dict; locale:
     defaultValues: { category: prefillShipment ? "delay" : "damage", shipmentId: prefillShipment ?? "", subject: "", description: "" },
   });
 
+  // Deep link from tracking: /support?shipment=DEMO-… prefills a delay report.
+  useEffect(() => {
+    if (prefillShipment) return;
+    const q = new URLSearchParams(window.location.search).get("shipment")?.toUpperCase();
+    if (q && TRACKING_ID.test(q)) reset({ category: "delay", shipmentId: q, subject: "", description: "" });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   const onSubmit = handleSubmit(async (data) => {
-    const res = await fetch("/api/demo/tickets", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+    const res = await demoFetch("/api/demo/tickets", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
     if (!res.ok) return;
     const json = (await res.json()) as { data: { id: string } };
     const now = new Date().toISOString();

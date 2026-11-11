@@ -9,7 +9,15 @@ const securityHeaders = [
   { key: "X-Robots-Tag", value: "noindex, nofollow" },
 ];
 
-const nextConfig: NextConfig = {
+// `npm run build:static` sets STATIC_EXPORT=1 to produce a server-less preview in ./out
+const isStatic = process.env.STATIC_EXPORT === "1";
+
+const nextConfig: NextConfig = isStatic ? {
+  output: "export",
+  trailingSlash: true,
+  images: { unoptimized: true },
+  env: { NEXT_PUBLIC_STATIC_DEMO: "1" },
+} : {
   poweredByHeader: false,
   async redirects() {
     return [{ source: "/", destination: "/en", permanent: false }];
