@@ -33,7 +33,7 @@ Where a refresh could add value:
 2. **No dedicated pages for high-value audiences** such as medical and pharmaceutical customers or e-commerce merchants, although both are listed industries.
 3. **Self-service is limited to tracking.** Quotations, issue reporting and notification preferences go through calls or email.
 4. **Figures differ across sources** (for example warehouse counts on the site and in 2022 press coverage). A single, dated facts sheet would build trust.
-5. **Small polish items:** a placeholder email link on the customer-service page, and phone hours that read "Call us anytime" next to published working hours.
+5. **Small polish items (to re-check on the live site):** the email link on the customer-service page appeared to be a placeholder, and the phone line reads "Call us anytime" next to published working hours.
 
 ## 4. Proposed improvements
 - Premium bilingual site with a clear story: *Precision in every delivery.*
