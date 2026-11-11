@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/*
+ * Beez Control Tower concept — design tokens.
+ * Navy carries authority, white carries clarity, steel blue structures the
+ * interface, and turquoise is reserved for "cold" accents and live states.
+ */
+@theme {
+  --color-navy-950: #050f22;
+  --color-navy-900: #0a1b38;
+  --color-navy-800: #102a52;
+  --color-navy-700: #1a3a6b;
+  --color-navy-600: #24508e;
+
+  --color-steel-700: #3b5878;
+  --color-steel-600: #4a6f96;
+  --color-steel-500: #6488ad;
+  --color-steel-400: #8aa7c6;
+  --color-steel-300: #b3c7dc;
+  --color-steel-200: #d5e1ee;
+  --color-steel-100: #e9f0f7;
+  --color-ice-50: #f5f8fc;
+
+  --color-frost-600: #0f8f8c;
+  --color-frost-500: #14a8a6;
+  --color-frost-400: #2ec4c0;
+  --color-frost-200: #a6e9e6;
+  --color-frost-100: #dff7f6;
+
+  /* Status (reserved: never used as a series colour) */
+  --color-ok: #1e8a5a;
+  --color-ok-bg: #e3f4ec;
+  --color-warn: #a76a00;
+  --color-warn-bg: #fdf1d8;
+  --color-alert: #c0392b;
+  --color-alert-bg: #fbe6e3;
+
+  /* Chart categorical order (validated: light surface, CVD-safe) */
+  --color-series-1: #2f68b0;
+  --color-series-2: #0f9592;
+  --color-series-3: #c47a1a;
+  --color-series-4: #8a5cc2;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-arabic: "Noto Kufi Arabic", "Noto Sans Arabic", "Geeza Pro", "Segoe UI", Tahoma, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --radius-card: 1rem;
+  --shadow-card: 0 1px 2px rgb(10 27 56 / 0.06), 0 8px 24px -12px rgb(10 27 56 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(10 27 56 / 0.08), 0 24px 48px -20px rgb(10 27 56 / 0.35);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-navy-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+html[lang="ar"] body {
+  font-family: var(--font-arabic);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-frost-400);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--color-navy-900);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-frost-600);
+}
+html[lang="ar"] .eyebrow {
+  letter-spacing: 0;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.6); opacity: 0.8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+.pulse-ring {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: pulse-ring 2.2s ease-out infinite;
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: -24; }
+}
+.route-flow {
+  stroke-dasharray: 4 8;
+  animation: dash 1.6s linear infinite;
+}

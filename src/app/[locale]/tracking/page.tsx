@@ -1,0 +1,25 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getDict, isLocale } from "@/lib/i18n";
+import { PageHero } from "@/components/site/PageHero";
+import { TrackingDemo } from "@/components/demo/TrackingDemo";
+
+type P = { params: Promise<{ locale: string }>; searchParams: Promise<{ id?: string }> };
+
+export async function generateMetadata({ params }: P): Promise<Metadata> {
+  const { locale } = await params;
+  return isLocale(locale) ? { title: getDict(locale).tracking.title } : {};
+}
+
+export default async function Page({ params, searchParams }: P) {
+  const { locale } = await params;
+  const { id } = await searchParams;
+  if (!isLocale(locale)) notFound();
+  const t = getDict(locale);
+  return (
+    <>
+      <PageHero eyebrow={t.tracking.eyebrow} title={t.tracking.title} lead={t.tracking.lead} />
+      <div className="bg-ice-50"><TrackingDemo t={t} locale={locale} initialId={id?.slice(0, 20)} /></div>
+    </>
+  );
+}
