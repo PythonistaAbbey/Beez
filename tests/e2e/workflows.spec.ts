@@ -123,8 +123,11 @@ test.describe("control tower", () => {
 test("executive demo mode navigates with the keyboard", async ({ page }) => {
   await page.goto("/en/executive");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(/precision in every delivery/i);
-  await page.keyboard.press("ArrowRight");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/scattered customer story/);
+  // Retry until hydration has attached the key handler.
+  await expect(async () => {
+    await page.keyboard.press("ArrowRight");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(/scattered customer story/, { timeout: 1000 });
+  }).toPass();
   await page.keyboard.press("n");
   await expect(page.getByText(/Speaker notes:/)).toBeVisible();
 });

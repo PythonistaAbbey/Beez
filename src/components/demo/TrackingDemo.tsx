@@ -61,7 +61,7 @@ export function TrackingDemo({ t, locale, initialId }: { t: Dict; locale: Locale
               dir="ltr"
               aria-invalid={state === "invalid" || state === "notfound"}
               aria-describedby={state === "invalid" || state === "notfound" ? errId : undefined}
-              className="w-full rounded-xl border border-steel-300 py-3 pe-3 ps-10 font-mono text-base uppercase aria-[invalid=true]:border-alert"
+              className="w-full rounded-xl border border-steel-300 py-3 pe-3 ps-10 font-mono text-base uppercase placeholder:normal-case placeholder:font-sans placeholder:text-steel-500 aria-[invalid=true]:border-alert"
             />
           </div>
           <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 font-semibold btn-midnight">

@@ -34,7 +34,7 @@ export function NotificationsTab() {
     <Card title={n.title}>
       <p className="-mt-2 mb-4 text-sm text-steel-700">{n.lead}</p>
       <form onSubmit={submit} onChange={() => setSaved(false)} noValidate className="space-y-6">
-        <div className="overflow-x-auto">
+        <div className="relative overflow-x-auto">
           <table className="w-full min-w-[560px] text-sm">
             <thead>
               <tr className="border-b border-steel-200">

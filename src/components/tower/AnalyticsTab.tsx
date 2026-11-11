@@ -25,7 +25,7 @@ export function AnalyticsTab() {
       </div>
       {table ? (
         <Card>
-          <div className="overflow-x-auto">
+          <div className="relative overflow-x-auto">
             <table className="w-full text-sm">
               <thead><tr className="border-b border-steel-200 text-xs uppercase text-steel-600">{["#", a.onTime, a.excursions, a.volume].map((h) => <th key={h} scope="col" className="px-2 py-2 text-start">{h}</th>)}</tr></thead>
               <tbody>

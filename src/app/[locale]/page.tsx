@@ -61,7 +61,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <div className="relative lg:col-span-6">
             <Reveal delay={0.15}>
               <KsaMap routes={routes} locale={locale} caption={`${t.common.demoData}: ${t.home.towerTitle}`} className="opacity-95" />
-              <div className="absolute bottom-0 end-0 w-[min(92%,360px)] glass-dark rounded-2xl p-4">
+              <div className="relative -mt-10 ms-auto w-[min(100%,360px)] glass-dark rounded-2xl p-4 sm:absolute sm:bottom-0 sm:end-0 sm:mt-0 sm:w-[min(92%,360px)]">
                 <div className="flex items-center justify-between text-xs">
                   <span className="inline-flex items-center gap-1.5 font-semibold text-frost-200">
                     <span className="h-2 w-2 rounded-full bg-frost-400" aria-hidden="true" /> {t.home.heroCard.label}

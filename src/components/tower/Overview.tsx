@@ -39,9 +39,9 @@ export function Overview() {
 
   return (
     <div className="space-y-6">
-      <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-5">
-        {kpis.map(({ icon: I, label, value, tone }) => (
-          <li key={label} className="rounded-2xl p-4 glass-card">
+      <ul className="grid grid-cols-2 gap-3 md:grid-cols-5">
+        {kpis.map(({ icon: I, label, value, tone }, i) => (
+          <li key={label} className={`rounded-2xl p-4 glass-card ${i === kpis.length - 1 && kpis.length % 2 ? "col-span-2 md:col-span-1" : ""}`}>
             <I className="h-4 w-4 text-frost-600" aria-hidden="true" />
             <p className={`mt-2 text-2xl font-bold tabular ${tone ?? "text-navy-900"}`}>{value}</p>
             <p className="text-xs text-steel-600">{label}</p>

@@ -53,7 +53,7 @@ export function InventoryTab() {
           </label>
         }
       >
-        <div className="overflow-x-auto">
+        <div className="relative overflow-x-auto">
           <table className="w-full min-w-[820px] text-sm">
             <thead>
               <tr className="border-b border-steel-200 text-xs uppercase tracking-wide text-steel-600">

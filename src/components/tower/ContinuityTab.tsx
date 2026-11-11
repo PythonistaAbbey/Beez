@@ -112,7 +112,7 @@ export function ContinuityTab() {
         <Card title={sel ? `${c.compareFor} ${sel.id}` : c.compare}>
           {sel ? (
             <>
-              <div className="overflow-x-auto">
+              <div className="relative overflow-x-auto">
                 <table className="w-full min-w-[560px] text-sm">
                   <thead>
                     <tr className="border-b border-steel-200 text-xs uppercase tracking-wide text-steel-600">

@@ -57,7 +57,7 @@ export function ShipmentsTab() {
         </label>
       </div>
       <p className="mt-3 text-xs text-steel-600" aria-live="polite">{nf(rows.length)} {td.table.results}</p>
-      <div className="mt-3 overflow-x-auto">
+      <div className="relative mt-3 overflow-x-auto">
         <table className="w-full min-w-[760px] text-sm">
           <thead>
             <tr className="border-b border-steel-200 text-start text-xs uppercase tracking-wide text-steel-600">

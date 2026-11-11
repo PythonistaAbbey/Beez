@@ -6,7 +6,7 @@ export function ServiceCompare({ t }: { t: Dict }) {
     <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6" aria-labelledby="compare-title">
       <h2 id="compare-title" className="text-2xl font-semibold">{c.compareTitle}</h2>
       <p className="mt-2 max-w-3xl text-steel-700">{c.compareLead}</p>
-      <div className="mt-8 overflow-x-auto rounded-2xl border border-steel-200">
+      <div className="glass-card relative mt-8 overflow-x-auto rounded-2xl">
         <table className="w-full min-w-[640px] text-sm">
           <thead className="bg-ice-50 text-start">
             <tr>

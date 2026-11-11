@@ -15,7 +15,7 @@ export interface MapRoute {
 const TONE = { ok: "#2ec4c0", warn: "#e2a400", alert: "#e5534b", done: "#8aa7c6" } as const;
 const W = 900;
 /** Label nudges where western cities sit close together. */
-const LABEL_OFFSET: Partial<Record<CityId, [number, number]>> = { jeddah: [-8, -6], makkah: [8, 16], taif: [10, 4] };
+const LABEL_OFFSET: Partial<Record<CityId, [number, number]>> = { jeddah: [-8, -6], makkah: [-6, 20], taif: [10, 5] };
 const H = 680;
 
 /**
@@ -78,7 +78,7 @@ export function KsaMap({
             return (
               <g key={c}>
                 <circle cx={x} cy={y} r="4" fill={dark ? "#d5e1ee" : "#24508e"} />
-                <text x={x + off[0]} y={y + off[1]} textAnchor={off[0] < 0 ? "end" : "start"} fontSize="15" fill={dark ? "#b3c7dc" : "#3b5878"} fontWeight="500">
+                <text x={x + off[0]} y={y + off[1]} textAnchor={off[0] < 0 ? "end" : "start"} fontSize="17" fill={dark ? "#d5e1ee" : "#3b5878"} fontWeight="500" stroke={dark ? "#071428" : "#ffffff"} strokeWidth="3.5" strokeLinejoin="round" paintOrder="stroke">
                   {CITIES[c].name[locale]}
                 </text>
               </g>
